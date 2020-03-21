@@ -56,7 +56,7 @@ steps:
     azureSubscription: 'Azure subscription 1(37b26708-bb62-4df6-9419-e002798bc6f1)'
     appType: 'webApp'
     WebAppName: 'vegaappwin'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
     enableCustomDeployment: true
     DeploymentType: 'webDeploy'
   displayName: 'Deploy to Azure win web deploy'
