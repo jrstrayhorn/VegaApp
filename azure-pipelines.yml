@@ -38,7 +38,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    arguments: '-r linux-x64 --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     projects: '$(Build.SourcesDirectory)/VegaApp.API'
     modifyOutputPath: false
   displayName: 'Publish'
@@ -54,10 +54,20 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(37b26708-bb62-4df6-9419-e002798bc6f1)'
-    appType: 'webAppLinux'
-    WebAppName: 'vegaapp'
+    appType: 'webApp'
+    WebAppName: 'vegaappwin'
     packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-    RuntimeStack: 'DOTNETCORE|LTS'
-  displayName: 'Deploy to Azure'
+  displayName: 'Deploy to Azure Win'
+
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure subscription 1(37b26708-bb62-4df6-9419-e002798bc6f1)'
+#     appType: 'webAppLinux'
+#     WebAppName: 'vegaapp'
+#     packageForLinux: '**/*.zip'
+#     RuntimeStack: 'DOTNETCORE|LTS'
+#   displayName: 'Deploy to Azure'
+
 
 
