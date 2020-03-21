@@ -39,6 +39,7 @@ steps:
     command: 'publish'
     publishWebProjects: false
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    projects: '$(Build.SourcesDirectory)/VegaApp.API'
     modifyOutputPath: false
   displayName: 'Publish'
 
@@ -47,5 +48,7 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'VegaApp'
     publishLocation: 'Container'
+
+
 
 
