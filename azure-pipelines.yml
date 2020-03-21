@@ -48,7 +48,16 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'VegaApp'
     publishLocation: 'Container'
+  displayName: 'Create build artifact'
 
-
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(37b26708-bb62-4df6-9419-e002798bc6f1)'
+    appType: 'webAppLinux'
+    WebAppName: 'vegaapp'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    RuntimeStack: 'DOTNETCORE|LTS'
+  displayName: 'Deploy to Azure'
 
 
