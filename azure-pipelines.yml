@@ -18,12 +18,20 @@ steps:
   inputs:
     command: 'install'
     workingDir: '$(Build.SourcesDirectory)/VegaApp-SPA'
+  displayName: 'npm install'
 
 - task: Npm@1
   inputs:
     command: 'custom'
     workingDir: '$(Build.SourcesDirectory)/VegaApp-SPA'
     customCommand: 'run build -- --prod'
+  displayName: 'npm build app'
 
-# - script: dotnet build --configuration $(buildConfiguration)
-#   displayName: 'dotnet build $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    arguments: '--configuration $(buildConfiguration)'
+    projects: '$(Build.SourcesDirectory)/VegaApp.API'
+  displayName: 'dotnet build $(buildConfiguration)'
+
+
