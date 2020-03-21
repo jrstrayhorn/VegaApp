@@ -38,7 +38,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '-r linux-x64 --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     projects: '$(Build.SourcesDirectory)/VegaApp.API'
     modifyOutputPath: false
   displayName: 'Publish'
