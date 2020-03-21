@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
+  baseUrl = environment.apiUrl;
   values: any;
 
   constructor(private http: HttpClient) {}
@@ -16,7 +18,7 @@ export class ValueComponent implements OnInit {
   }
 
   getValues() {
-    this.http.get('https://localhost:5001/api/values').subscribe(
+    this.http.get(this.baseUrl + 'values').subscribe(
       res => {
         this.values = res;
       },
